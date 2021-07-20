@@ -12,5 +12,8 @@ export default {
     port: process.env.PORT || 4000,
     api: {
         prefix: '/api/v1'
+    },
+    log: {
+        level: process.env.LOG_LEVEL,
     }
 }
