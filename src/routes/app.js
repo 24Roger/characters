@@ -1,7 +1,11 @@
 import express, { json } from 'express';
 import morgan from 'morgan';
 import config from '../config/config';
-import hello from './hello.routes';
+import user from './user.routes';
+import contentType from './contentType.routes';
+import genreType from './genreType.routes';
+import movie from './movie.routes';
+import character from './character.routes';
 import { notFound, errorHandler } from '../errors/error';
 
 const app = express();
@@ -10,7 +14,11 @@ const app = express();
 app.use(json());
 app.use(morgan('dev'));
 
-app.use(config.api.prefix, hello);
+app.use(config.api.prefix, user);
+app.use(config.api.prefix, contentType);
+app.use(config.api.prefix, genreType);
+app.use(config.api.prefix, movie);
+app.use(config.api.prefix, character);
 
 app.use(notFound);
 app.use(errorHandler);
