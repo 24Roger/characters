@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 import User from "../models/User";
 
 class UserRespository {
@@ -30,6 +31,8 @@ class UserRespository {
     }
 
     async createUser(user) {
+        user.password = await bcrypt.hash(user.password, 10);
+
         return await User.create(user);
     }
 
