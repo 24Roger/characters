@@ -12,6 +12,8 @@ class UserRespository {
                     'userName',
                     'name',
                     'email',
+                    'role',
+                    'enable'
                 ]
             }
         );
@@ -25,9 +27,31 @@ class UserRespository {
                     'userName',
                     'name',
                     'email',
+                    'role',
+                    'enable'
                 ]
             }
         );
+    }
+
+    async findUserName(userName) {
+        return await User.findOne(
+            {
+                where: {
+                    userName
+                }
+            }
+        )
+    }
+
+    async findEmail(email) {
+        return await User.findOne(
+            {
+                where: {
+                    email
+                }
+            }
+        )
     }
 
     async createUser(user) {

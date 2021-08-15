@@ -10,6 +10,14 @@ export const findById = async (id) => {
     return await userRespository.findById(id);
 }
 
+export const findUserName = async (userName) => {
+    return await userRespository.findUserName(userName);
+}
+
+export const findEmail = async (email) => {
+    return await userRespository.findEmail(email);
+}
+
 export const createUser = async (user) => {
     return await userRespository.createUser(user);
 }

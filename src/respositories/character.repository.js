@@ -7,6 +7,7 @@ class CharacterRepository {
         return await Character.findAll(
             {
                 attributes: [
+                    'id',
                     'name',
                     'image',
                     'age',
