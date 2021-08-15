@@ -6,8 +6,8 @@ export const findAll = async (filter, options) => {
     return await movieRepository.findAll(filter, options);
 }
 
-export const findById = async (id) => {
-    return await movieRepository.findById(id);
+export const findMovieById = async (id) => {
+    return await movieRepository.findMovieById(id);
 }
 
 export const createMovie = async (movie) => {

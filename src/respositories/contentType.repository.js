@@ -14,7 +14,7 @@ class ContentTypeRepository {
         );
     }
 
-    async findById(id) {
+    async findContentById(id) {
         return await ContentType.findByPk(
             id,
             {

@@ -14,7 +14,7 @@ class GenreTypeRepository {
         );
     }
 
-    async findById(id) {
+    async findGenreById(id) {
         return await GenreType.findByPk(
             id,
             {

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import {
     findAll,
-    findById,
+    findMovieById,
     createMovie,
     updateMovie,
     deleteMovie,
@@ -34,7 +34,7 @@ export const getMovieById = async (req, res, next) => {
     const id = req.params.id;
 
     try {
-        const result = await findById(id);
+        const result = await findMovieById(id);
 
         res.json(new Success(result));
     } catch (error) {

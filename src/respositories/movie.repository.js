@@ -30,6 +30,7 @@ class MovieRepository {
         let config = {
             where,
             attributes: [
+                'id',
                 'title',
                 'image',
                 'creationDate',
@@ -46,7 +47,7 @@ class MovieRepository {
         return await Movie.findAll(config);
     }
 
-    async findById(id) {
+    async findMovieById(id) {
         return await Movie.findByPk(
             id,
             {

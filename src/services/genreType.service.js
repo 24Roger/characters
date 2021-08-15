@@ -6,8 +6,8 @@ export const findAll = async () => {
     return await genreTypeRepository.findAll();
 }
 
-export const findById = async (id) => {
-    return await genreTypeRepository.findById(id);
+export const findGenreById = async (id) => {
+    return await genreTypeRepository.findGenreById(id);
 }
 
 export const findByGenre = async (genre) => {

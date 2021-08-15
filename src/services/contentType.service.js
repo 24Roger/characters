@@ -6,8 +6,8 @@ export const findAll = async () => {
     return await contentTypeRepository.findAll();
 }
 
-export const findById = async (id) => {
-    return await contentTypeRepository.findById(id);
+export const findContentById = async (id) => {
+    return await contentTypeRepository.findContentById(id);
 }
 
 export const findByContent = async (content) => {
