@@ -23,5 +23,9 @@ export default {
         host: process.env.DATABASE_HOST,
         dialect: process.env.DATABASE_DIALECT,
         port: process.env.DATABASE_PORT
+    },
+    auth: {
+        secret: process.env.AUTH_SECRET,
+        ttl: process.env.AUTH_TTL
     }
 }

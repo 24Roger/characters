@@ -1,6 +1,8 @@
 import { check, body, param } from 'express-validator';
 import { findByGenre, findGenreById } from '../../services/genreType.service';
 import AppError from '../../errors/appError';
+import { ADMIN } from '../../config/constants';
+import { validJwt, hasRole } from '../auth';
 import { validResult } from '../commons';
 
 const genreRequired = check('genre', 'genre is required').not().isEmpty();
@@ -29,7 +31,14 @@ const idValid = param('id').trim().custom(
     }
 );
 
+export const getValidator = [
+    validJwt,
+    validResult
+];
+
 export const postValidator = [
+    validJwt,
+    hasRole(ADMIN),
     genreRequired,
     genreValid,
     genreExist,
@@ -37,6 +46,8 @@ export const postValidator = [
 ];
 
 export const putValidator = [
+    validJwt,
+    hasRole(ADMIN),
     idRequired,
     idValid,
     genreRequired,
@@ -46,6 +57,8 @@ export const putValidator = [
 ];
 
 export const deleteValidator = [
+    validJwt,
+    hasRole(ADMIN),
     idRequired,
     idValid,
     validResult

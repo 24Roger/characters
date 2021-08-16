@@ -6,6 +6,7 @@ import {
     removeGenreType,
 } from '../controllers/genreType.controller';
 import {
+    getValidator,
     postValidator,
     putValidator,
     deleteValidator
@@ -13,7 +14,7 @@ import {
 
 const router = Router();
 
-router.get('/genreType', getGenreTypes);
+router.get('/genreType', getValidator, getGenreTypes);
 router.post('/genreType', postValidator, newGenreType);
 router.put('/genreType/:id(\\d+)', putValidator, modifyGenreType);
 router.delete('/genreType/:id(\\d+)', deleteValidator, removeGenreType);

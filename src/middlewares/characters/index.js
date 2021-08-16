@@ -1,5 +1,7 @@
 import { check, body, param } from 'express-validator';
 import AppError from '../../errors/appError';
+import { ADMIN } from '../../config/constants';
+import { validJwt, hasRole } from '../auth';
 import { findById } from '../../services/character.service';
 import { validResult } from '../commons';
 
@@ -39,7 +41,14 @@ const optionalHistoryRequired = check('history', 'history is required').optional
 
 const optionalHistoryValid = body('history').optional().trim().isString().isLength({ min: 10, max: 1000 }).withMessage('history field must be between 10 and 1000 characters long');
 
+export const getValidator = [
+    validJwt,
+    validResult
+]
+
 export const postValidator = [
+    validJwt,
+    hasRole(ADMIN),
     nameRequired,
     nameValid,
     //imageValid,
@@ -50,6 +59,8 @@ export const postValidator = [
 ];
 
 export const putValidator = [
+    validJwt,
+    hasRole(ADMIN),
     idRequired,
     idValid,
     optionalNameRequired,
@@ -62,6 +73,8 @@ export const putValidator = [
 ];
 
 export const deleteValidator = [
+    validJwt,
+    hasRole(ADMIN),
     idRequired,
     idValid,
     validResult

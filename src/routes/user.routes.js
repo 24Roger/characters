@@ -6,6 +6,7 @@ import {
     removeUser
 } from '../controllers/user.controller';
 import {
+    getValidator,
     postValidator,
     putValidator,
     deleteValidator
@@ -13,7 +14,7 @@ import {
 
 const router = Router();
 
-router.get('/user', getAllUsers);
+router.get('/user', getValidator, getAllUsers);
 router.post('/user', postValidator, newUser);
 router.put('/user/:id(\\d+)', putValidator, modifyUser);
 router.delete('/user/:id(\\d+)', deleteValidator, removeUser);
