@@ -6,6 +6,7 @@ import contentType from './contentType.routes';
 import genreType from './genreType.routes';
 import movie from './movie.routes';
 import character from './character.routes';
+import auth from './auth.routes';
 import { notFound, errorHandler } from '../errors/error';
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(config.api.prefix, contentType);
 app.use(config.api.prefix, genreType);
 app.use(config.api.prefix, movie);
 app.use(config.api.prefix, character);
+app.use(config.api.prefix, auth);
 
 app.use(notFound);
 app.use(errorHandler);

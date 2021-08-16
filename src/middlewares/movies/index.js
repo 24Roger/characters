@@ -3,6 +3,8 @@ import { findGenreById } from '../../services/genreType.service';
 import { findContentById } from '../../services/contentType.service';
 import { findMovieById } from '../../services/movie.service';
 import AppError from '../../errors/appError';
+import { ADMIN } from '../../config/constants';
+import { validJwt, hasRole } from '../auth';
 import { validResult } from '../commons';
 
 const titleRequired = check('title', 'title is required').not().isEmpty();
@@ -88,7 +90,21 @@ const optionalContentTypeIdValid = body('contentTypeId').optional().trim().isInt
     }
 );
 
+export const getValidator = [
+    validJwt,
+    validResult
+];
+
+export const getByIdValidator = [
+    validJwt,
+    idRequired,
+    idValid,
+    validResult
+]
+
 export const postValidator = [
+    validJwt,
+    hasRole(ADMIN),
     titleRequired,
     titleValid,
     creationDateRequired,
@@ -103,6 +119,8 @@ export const postValidator = [
 ];
 
 export const putValidator = [
+    validJwt,
+    hasRole(ADMIN),
     idRequired,
     idValid,
     optionalTitleRequired,
@@ -119,7 +137,9 @@ export const putValidator = [
 ];
 
 export const deleteValidator = [
+    validJwt,
+    hasRole(ADMIN),
     idRequired,
     idValid,
     validResult
-]
+];

@@ -6,6 +6,7 @@ import {
     removeCharacter,
 } from '../controllers/character.controller';
 import {
+    getValidator,
     postValidator,
     putValidator,
     deleteValidator
@@ -13,7 +14,7 @@ import {
 
 const router = Router();
 
-router.get('/character', getCharacters);
+router.get('/character', getValidator, getCharacters);
 router.post('/character', postValidator, newCharacter);
 router.put('/character/:id(\\d+)', putValidator, modifyCharacter);
 router.delete('/character/:id(\\d+)', deleteValidator, removeCharacter);

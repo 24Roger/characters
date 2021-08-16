@@ -6,6 +6,7 @@ import {
     removeContentType,
 } from '../controllers/contentType.controller';
 import {
+    getValidator,
     postValidator,
     putValidator,
     deleteValidator
@@ -13,7 +14,7 @@ import {
 
 const router = Router();
 
-router.get('/contentType', getContentTypes);
+router.get('/contentType', getValidator, getContentTypes);
 router.post('/contentType', postValidator, newContentType);
 router.put('/contentType/:id(\\d+)', putValidator, modifyContentType);
 router.delete('/contentType/:id(\\d+)', deleteValidator, removeContentType);

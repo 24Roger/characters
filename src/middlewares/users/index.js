@@ -1,6 +1,8 @@
 import { check, body, param } from 'express-validator';
 import { findUserName, findEmail, findById } from '../../services/user.service';
 import AppError from '../../errors/appError';
+import { ROLES, ADMIN } from '../../config/constants';
+import { validJwt, hasRole } from '../auth';
 import { validResult } from '../commons';
 
 const userNameRequired = check('userName', 'userName is required').not().isEmpty();
@@ -16,10 +18,6 @@ const userNameExist = check('userName').custom(
         }
     }
 );
-
-const nameRequired = check('name', 'name is required').not().isEmpty();
-
-const nameValid = body('name').isLength({ min: 5, max: 25 }).trim().withMessage('name field must be between 5 and 25 characters long');
 
 const emailRequired = check('email', 'email is required').not().isEmpty();
 
@@ -49,6 +47,14 @@ const idExist = param('id').custom(
             throw new AppError('id not exist', 400);
         }
     }
+);
+
+const optionalRoleValid = check('role').optional().custom(
+    async (role = '') => {
+        if (!ROLES.includes(role)) {
+            throw new AppError('Invalid role', 400);
+        }
+    }
 )
 
 const optionalUserNameRequired = check('userName', 'userName is required').optional().not().isEmpty();
@@ -66,6 +72,8 @@ const optionalUserNameExist = check('userName').optional().custom(
 );
 
 const optionalNameRequired = check('name', 'name is required').optional().not().isEmpty();
+
+const optionalNameValid = body('name').optional().trim().isLength({ min: 5, max: 25 }).trim().withMessage('name field must be between 5 and 25 characters long');
 
 const optionalEmailRequired = check('email', 'email is required').optional().not().isEmpty();
 
@@ -87,12 +95,20 @@ const optionalPasswordValid = body('password').optional().trim().isLength({ min:
 
 const optionalRoleRequired = check('role', 'role is required').optional().not().isEmpty();
 
+export const getValidator = [
+    validJwt,
+    validResult
+]
+
 export const postValidator = [
+    validJwt,
+    hasRole(ADMIN),
     userNameRequired,
     userNameValid,
     userNameExist,
-    nameRequired,
-    nameValid,
+    optionalRoleValid,
+    optionalNameRequired,
+    optionalNameValid,
     emailRequired,
     emailValid,
     emailExist,
@@ -102,12 +118,16 @@ export const postValidator = [
 ];
 
 export const putValidator = [
+    validJwt,
+    hasRole(ADMIN),
     idRequired,
     idExist,
+    optionalRoleValid,
     optionalUserNameRequired,
     optionalUserNameValid,
     optionalUserNameExist,
     optionalNameRequired,
+    optionalNameValid,
     optionalEmailRequired,
     optionalEmailValid,
     optionalEmailExist,
@@ -118,6 +138,8 @@ export const putValidator = [
 ];
 
 export const deleteValidator = [
+    validJwt,
+    hasRole(ADMIN),
     idRequired,
     idExist,
     validResult
