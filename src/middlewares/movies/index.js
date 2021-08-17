@@ -1,11 +1,14 @@
 import { check, body, param } from 'express-validator';
+import multer from 'multer';
 import { findGenreById } from '../../services/genreType.service';
 import { findContentById } from '../../services/contentType.service';
 import { findMovieById } from '../../services/movie.service';
 import AppError from '../../errors/appError';
 import { ADMIN } from '../../config/constants';
 import { validJwt, hasRole } from '../auth';
-import { validResult } from '../commons';
+import { validResult, imageRequired } from '../commons';
+
+const upload = multer();
 
 const titleRequired = check('title', 'title is required').not().isEmpty();
 
@@ -90,6 +93,8 @@ const optionalContentTypeIdValid = body('contentTypeId').optional().trim().isInt
     }
 );
 
+const optionalImageEmpty = body('image').optional().isEmpty().withMessage('image field must be empty');
+
 export const getValidator = [
     validJwt,
     validResult
@@ -100,7 +105,7 @@ export const getByIdValidator = [
     idRequired,
     idValid,
     validResult
-]
+];
 
 export const postValidator = [
     validJwt,
@@ -115,6 +120,17 @@ export const postValidator = [
     genreTypeIdValid,
     contentTypeIdRequired,
     contentTypeIdValid,
+    optionalImageEmpty,
+    validResult
+];
+
+export const postImageValidator = [
+    validJwt,
+    hasRole(ADMIN),
+    idRequired,
+    idValid,
+    upload.single('image'),
+    imageRequired,
     validResult
 ];
 
@@ -133,6 +149,7 @@ export const putValidator = [
     optionalGenreTypeIdValid,
     optionalContentTypeIdRequired,
     optionalContentTypeIdValid,
+    optionalImageEmpty,
     validResult
 ];
 
