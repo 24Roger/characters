@@ -17,7 +17,7 @@ class CharacterRepository {
         );
     }
 
-    async findById(id) {
+    async findCharacterById(id) {
         return await Character.findByPk(
             id,
             {

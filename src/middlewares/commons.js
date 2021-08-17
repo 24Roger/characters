@@ -1,4 +1,4 @@
-import { validationResult } from 'express-validator';
+import { validationResult, checkSchema } from 'express-validator';
 import AppError from '../errors/appError';
 
 export const validResult = (req, res, next) => {
@@ -10,3 +10,14 @@ export const validResult = (req, res, next) => {
 
     next();
 }
+
+export const imageRequired = checkSchema(
+    {
+        'image': {
+            custom: {
+                options: (value, { req }) => !!req.file,
+                errorMessage: 'You should upload a image',
+            },
+        }
+    }
+);

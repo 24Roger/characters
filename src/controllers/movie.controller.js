@@ -7,6 +7,7 @@ import {
     deleteMovie,
 } from '../services/movie.service';
 import Success from '../handlers/success.handler';
+import { uploadMovieImage } from '../services/image.service';
 
 /**
  * @param {Request} req
@@ -88,6 +89,25 @@ export const removeMovie = async (req, res, next) => {
 
     try {
         const result = await deleteMovie(id);
+
+        res.json(new Success(result));
+    } catch (error) {
+        next(error);
+    }
+}
+
+/**
+ * @param {Request} req
+ * @param {Response} res
+ */
+
+export const movieImage = async (req, res, next) => {
+    const id = req.params.id;
+
+    const image = req.file;
+
+    try {
+        const result = await uploadMovieImage(id, image);
 
         res.json(new Success(result));
     } catch (error) {

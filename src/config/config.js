@@ -27,5 +27,10 @@ export default {
     auth: {
         secret: process.env.AUTH_SECRET,
         ttl: process.env.AUTH_TTL
+    },
+    aws: {
+        bucketName: process.env.BUCKET_NAME,
+        accessKeyId: process.env.ACCESS_KEY_ID,
+        secretAccessKey: process.env.SECRET_ACCESS_KEY
     }
 }

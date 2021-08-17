@@ -10,8 +10,6 @@ import Success from '../handlers/success.handler';
 export const loginUser = async (req, res, next) => {
     const { email, password } = req.body;
 
-    console.log(email, password);
-
     try {
         const result = await login(email, password);
 

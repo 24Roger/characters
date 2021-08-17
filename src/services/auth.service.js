@@ -8,9 +8,6 @@ export const login = async (email, password) => {
     try {
         const user = await findEmail(email);
 
-        console.log(user);
-
-
         if (!user) {
             throw new AppError('authentication failed, email / password does not correct', 401);
         }
