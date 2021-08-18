@@ -3,7 +3,7 @@ import {
     findAll,
     createUser,
     updateUser,
-    deleteUser
+    deleteUser,
 } from '../services/user.service';
 import Success from '../handlers/success.handler';
 

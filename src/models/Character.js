@@ -32,6 +32,15 @@ Character.belongsToMany(
     Movie,
     {
         through: 'charactersMovies',
+        as: 'movies'
+    }
+);
+
+Movie.belongsToMany(
+    Character,
+    {
+        through: 'charactersMovies',
+        as: 'characters'
     }
 );
 

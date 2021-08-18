@@ -53,7 +53,7 @@ export const registerValidator = [
     passwordRequired,
     passwordValid,
     validResult
-]
+];
 
 export const validJwt = async (req, res, next) => {
     try {

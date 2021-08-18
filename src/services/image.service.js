@@ -28,7 +28,7 @@ export const uploadCharacterImage = async (id, image) => {
 }
 
 export const uploadMovieImage = async (id, image) => {
-    const movie = await movieRepository.findAll(id);
+    const movie = await movieRepository.findMovieById(id);
 
     if (movie.image) {
         await imageRepository.deleteImage(movie.image);

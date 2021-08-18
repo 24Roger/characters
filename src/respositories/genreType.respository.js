@@ -19,6 +19,7 @@ class GenreTypeRepository {
             id,
             {
                 attributes: [
+                    'id',
                     'genre'
                 ]
             }

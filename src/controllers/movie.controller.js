@@ -2,9 +2,11 @@ import { Request, Response } from 'express';
 import {
     findAll,
     findMovieById,
+    findByIdMovieWithCharacters,
     createMovie,
     updateMovie,
     deleteMovie,
+    associateCharacter,
 } from '../services/movie.service';
 import Success from '../handlers/success.handler';
 import { uploadMovieImage } from '../services/image.service';
@@ -36,6 +38,23 @@ export const getMovieById = async (req, res, next) => {
 
     try {
         const result = await findMovieById(id);
+
+        res.json(new Success(result));
+    } catch (error) {
+        next(error);
+    }
+}
+
+/**
+ * @param {Request} req
+ * @param {Response} res
+ */
+
+export const getByIdMovieWithCharacters = async (req, res, next) => {
+    const id = req.params.id;
+
+    try {
+        const result = await findByIdMovieWithCharacters(id);
 
         res.json(new Success(result));
     } catch (error) {
@@ -108,6 +127,25 @@ export const movieImage = async (req, res, next) => {
 
     try {
         const result = await uploadMovieImage(id, image);
+
+        res.json(new Success(result));
+    } catch (error) {
+        next(error);
+    }
+}
+
+/**
+ * @param {Request} req
+ * @param {Response} res
+ */
+
+export const associate = async (req, res, next) => {
+    const movie = req.movie;
+
+    const character = req.character;
+
+    try {
+        const result = await associateCharacter(movie, character);
 
         res.json(new Success(result));
     } catch (error) {
