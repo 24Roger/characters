@@ -98,7 +98,7 @@ const optionalRoleRequired = check('role', 'role is required').optional().not().
 export const getValidator = [
     validJwt,
     validResult
-]
+];
 
 export const postValidator = [
     validJwt,
@@ -143,4 +143,4 @@ export const deleteValidator = [
     idRequired,
     idExist,
     validResult
-]
+];

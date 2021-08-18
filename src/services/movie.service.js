@@ -12,6 +12,14 @@ export const findMovieById = async (id) => {
     return await movieRepository.findMovieById(id);
 }
 
+export const findMovieByTitle = async (title) => {
+    return await movieRepository.findMovieByTitle(title);
+}
+
+export const findByIdMovieWithCharacters = async (id) => {
+    return await movieRepository.findByIdMovieWithCharacters(id);
+}
+
 export const createMovie = async (movie) => {
     return await movieRepository.createMovie(movie);
 }
@@ -26,4 +34,8 @@ export const deleteMovie = async (id) => {
     await imageRepository.deleteImage(movie.image);
 
     return await movieRepository.deleteMovie(id);
+}
+
+export const associateCharacter = async (movie, character) => {
+    return await character.addMovie(movie);
 }

@@ -19,6 +19,7 @@ class ContentTypeRepository {
             id,
             {
                 attributes: [
+                    'id',
                     'content'
                 ]
             });

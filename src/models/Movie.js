@@ -15,7 +15,7 @@ const Movie = sequelize.define(
             allowNull: true,
         },
         creationDate: {
-            type: DataTypes.DATE,
+            type: DataTypes.DATEONLY,
             allowNull: true,
         },
         calification: {
@@ -48,6 +48,7 @@ Movie.belongsTo(
     GenreType,
     {
         foreignKey: 'genreTypeId',
+        as: 'genreType',
         targetKey: 'id',
     }
 );
@@ -56,6 +57,7 @@ Movie.belongsTo(
     ContentType,
     {
         foreignKey: 'contentTypeId',
+        as: 'contentType',
         targetKey: 'id',
     }
 );

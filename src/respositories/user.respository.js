@@ -24,6 +24,7 @@ class UserRespository {
             id,
             {
                 attributes: [
+                    'id',
                     'userName',
                     'name',
                     'email',

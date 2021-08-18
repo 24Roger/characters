@@ -2,10 +2,12 @@ import { Router } from 'express';
 import {
     getMovies,
     getMovieById,
+    getByIdMovieWithCharacters,
     newMovie,
     modifyMovie,
     removeMovie,
-    movieImage
+    movieImage,
+    associate
 } from '../controllers/movie.controller';
 import {
     getValidator,
@@ -13,16 +15,19 @@ import {
     postValidator,
     postImageValidator,
     putValidator,
-    deleteValidator
+    deleteValidator,
+    associationValidator
 } from '../middlewares/movies';
 
 const router = Router();
 
 router.get('/movie', getValidator, getMovies);
 router.get('/movie/:id(\\d+)', getByIdValidator, getMovieById);
+router.get('/movie/:id(\\d+)/characters', getByIdValidator, getByIdMovieWithCharacters)
 router.post('/movie', postValidator, newMovie);
 router.post('/movie/:id(\\d+)/image', postImageValidator, movieImage);
 router.put('/movie/:id(\\d+)', putValidator, modifyMovie);
+router.put('/movie/:idMovie(\\d+)/character/:idCharacter(\\d+)', associationValidator, associate);
 router.delete('/movie/:id(\\d+)', deleteValidator, removeMovie);
 
 export default router;
