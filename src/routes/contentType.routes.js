@@ -14,9 +14,9 @@ import {
 
 const router = Router();
 
-router.get('/contentType', getValidator, getContentTypes);
+router.get('/contentTypes', getValidator, getContentTypes);
 router.post('/contentType', postValidator, newContentType);
-router.put('/contentType/:id(\\d+)', putValidator, modifyContentType);
-router.delete('/contentType/:id(\\d+)', deleteValidator, removeContentType);
+router.put('/contentType/:id(\\d+)/update', putValidator, modifyContentType);
+router.delete('/contentType/:id(\\d+)/delete', deleteValidator, removeContentType);
 
 export default router;

@@ -7,7 +7,7 @@ import { validResult } from '../commons';
 
 const genreRequired = check('genre', 'genre is required').not().isEmpty();
 
-const genreValid = body('genre').trim().isLength({ min: 2, max: 10 }).withMessage('genre field must be between 8 and 32 characters long');
+const genreValid = body('genre').trim().isLength({ min: 2, max: 10 }).withMessage('genre field must be between 2 and 10 characters long');
 
 const genreExist = check('genre').trim().custom(
     async (genre = '') => {

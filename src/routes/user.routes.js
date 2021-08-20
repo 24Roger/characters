@@ -14,9 +14,9 @@ import {
 
 const router = Router();
 
-router.get('/user', getValidator, getAllUsers);
+router.get('/users', getValidator, getAllUsers);
 router.post('/user', postValidator, newUser);
-router.put('/user/:id(\\d+)', putValidator, modifyUser);
-router.delete('/user/:id(\\d+)', deleteValidator, removeUser);
+router.put('/user/:id(\\d+)/update', putValidator, modifyUser);
+router.delete('/user/:id(\\d+)/delete', deleteValidator, removeUser);
 
 export default router;

@@ -14,9 +14,9 @@ import {
 
 const router = Router();
 
-router.get('/genreType', getValidator, getGenreTypes);
+router.get('/genreTypes', getValidator, getGenreTypes);
 router.post('/genreType', postValidator, newGenreType);
-router.put('/genreType/:id(\\d+)', putValidator, modifyGenreType);
-router.delete('/genreType/:id(\\d+)', deleteValidator, removeGenreType);
+router.put('/genreType/:id(\\d+)/update', putValidator, modifyGenreType);
+router.delete('/genreType/:id(\\d+)/delete', deleteValidator, removeGenreType);
 
 export default router;

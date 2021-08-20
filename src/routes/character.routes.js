@@ -21,13 +21,13 @@ import {
 
 const router = Router();
 
-router.get('/character', getValidator, getCharacters);
+router.get('/characters', getValidator, getCharacters);
 router.get('/character/:id(\\d+)', getByIdValidator, getCharacterById);
 router.get('/character/:id(\\d+)/movies', getByIdValidator, getByIdCharacterWithMovies);
 router.post('/character', postValidator, newCharacter);
 router.post('/character/:id(\\d+)/image', postImageValidator, characterImage);
-router.put('/character/:id(\\d+)', putValidator, modifyCharacter);
+router.put('/character/:id(\\d+)/update', putValidator, modifyCharacter);
 router.put('/character/:idCharacter(\\d+)/movie/:idMovie(\\d+)', associationValidator, associate);
-router.delete('/character/:id(\\d+)', deleteValidator, removeCharacter);
+router.delete('/character/:id(\\d+)/delete', deleteValidator, removeCharacter);
 
 export default router;
