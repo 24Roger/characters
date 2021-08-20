@@ -51,7 +51,7 @@
             "post": {
                 "summary": "Login user",
                 "tags": ["Auth"],
-                "description": "The user role, can only make GET requests. Role admin test \"email\": \"useradmin@test.com\", \"password\": \"71bLW!gx4ufqJZyDpvEJNE3V\"",
+                "description": "Role admin test \"email\": \"useradmin@test.com\", \"password\": \"71bLW!gx4ufqJZyDpvEJNE3V\"",
                 "security": [],
                 "requestBody": {
                     "content": {

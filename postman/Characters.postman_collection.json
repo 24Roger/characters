@@ -1,0 +1,1036 @@
+{
+	"info": {
+		"_postman_id": "50cecd66-d4aa-4d83-9541-37e01e70aaa8",
+		"name": "Characters",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{characters}}/users",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"24Roger\",\r\n    \"email\": \"rogeR241@test.com\",\r\n    \"role\": \"user\",\r\n    \"password\": \"24Rogerm\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{characters}}/user",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{characters}}/user/:id/update",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"user",
+								":id",
+								"update"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{characters}}/user/:id/delete",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"user",
+								":id",
+								"delete"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "68"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Content Type",
+			"item": [
+				{
+					"name": "Get All Content Types",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{characters}}/contentTypes",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"contentTypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Content Type",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Movie\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{characters}}/contentType",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"contentType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Content Type",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Movie\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{characters}}/contentType/:id/update",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"contentType",
+								":id",
+								"update"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Content Type",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{characters}}/contentType/:id/delete",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"contentType",
+								":id",
+								"delete"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "27"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Genre Type",
+			"item": [
+				{
+					"name": "Get All Genre Types",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{characters}}/genreTypes",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"genreTypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Genre Type",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"genre\": \"Action\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{characters}}/genreType",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"genreType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Genre Type",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"genre\": \"ction\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{characters}}/genreType/:id/update",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"genreType",
+								":id",
+								"update"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Genre Type",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{characters}}/genreType/:id/delete",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"genreType",
+								":id",
+								"delete"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movie",
+			"item": [
+				{
+					"name": "Get All Movies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{characters}}/movies?filter[title]=The&options[order]=",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "filter[title]",
+									"value": "The"
+								},
+								{
+									"key": "options[order]",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get movie By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{characters}}/movie/:id",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"movie",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movie With Characters",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{characters}}/movie/:id/characters",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"movie",
+								":id",
+								"characters"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Movie",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"The Avengers\",\r\n    \"creationDate\": \"     04/11/2012\",\r\n    \"calification\":  9,\r\n    \"genreTypeId\": 1,\r\n    \"contentTypeId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{characters}}/movie",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"movie"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Movie Image",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/roger/OneDrive - Universidad Nacional Autónoma de Honduras/Desktop/vengadores-poster-1551691493.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{characters}}/movie/:id/image",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"movie",
+								":id",
+								"image"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Movie",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"    The Avengers        \",\r\n    \"image\": \"\",\r\n    \"creationDate\": \"     44/11/2012\",\r\n    \"calification\": \" 9\",\r\n    \"genreTypeId\": \"24\",\r\n    \"contentTypeId\": \" 0\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{characters}}/movie/:id/update",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"movie",
+								":id",
+								"update"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Associate Character",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{characters}}/movie/:idMovie/character/:idCharacter",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"movie",
+								":idMovie",
+								"character",
+								":idCharacter"
+							],
+							"variable": [
+								{
+									"key": "idMovie",
+									"value": "1"
+								},
+								{
+									"key": "idCharacter",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Move",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{characters}}/movie/:id/delete",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"movie",
+								":id",
+								"delete"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Character",
+			"item": [
+				{
+					"name": "Get All Characters",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{characters}}/characters?filter[name]=S",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"characters"
+							],
+							"query": [
+								{
+									"key": "filter[name]",
+									"value": "S"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Character By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{characters}}/character/:id",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"character",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Character With Movies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{characters}}/character/:id/movies",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"character",
+								":id",
+								"movies"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Character",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Tony Stark\",\r\n    \"age\": 48,\r\n    \"history\": \"Tony Stark uses three suits as Iron Man Mark I to escape the Ten Rings terrorist organization, Mark II to perfect flying, and Mark III out of a gold titanium alloy with red highlights to make it less ostentatious. Captured by the terrorist group Ten Rings to build a Jericho missile for them, Stark and fellow captive Dr. Yinsen secretly build a crude but strong power armor fueled by a miniaturized Arc Reactor, a smaller version of a power source previously invented by Tonys father.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{characters}}/character",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"character"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Character Image",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{characters}}/character/:id/image",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"character",
+								":id",
+								"image"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Character",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Tony Stark\",\r\n    \"image\": \"\",\r\n    \"age\": 48,\r\n    \"history\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{characters}}/character/:id/update",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"character",
+								":id",
+								"update"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Associate Movie",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{characters}}/character/:idCharacter/movie/:idMovie",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"character",
+								":idCharacter",
+								"movie",
+								":idMovie"
+							],
+							"variable": [
+								{
+									"key": "idCharacter",
+									"value": "1"
+								},
+								{
+									"key": "idMovie",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Character",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{characters}}/character/:id/delete",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"character",
+								":id",
+								"delete"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"token\", jsonData.data.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"\",\r\n    \"password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{characters}}/auth/login",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"\",\r\n    \"email\": \"\",\r\n    \"password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{characters}}/auth/register",
+							"host": [
+								"{{characters}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}

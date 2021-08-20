@@ -13,24 +13,6 @@ import { notFound, errorHandler } from '../errors/error';
 
 const app = express();
 
-const options = {
-    explorer: true,
-    swaggerOptions: {
-        authAction: {
-            JWT: {
-                name: 'JWT',
-                schema: {
-                    type: 'apiKey',
-                    in: 'header',
-                    name: 'Authorization',
-                    description: ''
-                },
-                value: 'Bearer <my own JWT token>'
-            }
-        }
-    }
-};
-
 //middleware
 app.use(json());
 app.use(morgan('dev'));
@@ -44,7 +26,7 @@ app.use(config.api.prefix, auth);
 app.use(
     config.swagger.path,
     swaggerUi.serve,
-    swaggerUi.setup(swaggerDocument, options)
+    swaggerUi.setup(swaggerDocument)
 );
 
 app.use(notFound);
