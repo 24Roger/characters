@@ -8,6 +8,7 @@ import genreType from './genreType.routes';
 import movie from './movie.routes';
 import character from './character.routes';
 import auth from './auth.routes';
+import swaggerDocument from '../swagger/swagger.json';
 import { notFound, errorHandler } from '../errors/error';
 
 const app = express();
@@ -43,9 +44,7 @@ app.use(config.api.prefix, auth);
 app.use(
     config.swagger.path,
     swaggerUi.serve,
-    swaggerUi.setup(
-        require('../swagger/24Roger-Characters-1.0.0-swagger.json', options)
-    )
+    swaggerUi.setup(swaggerDocument, options)
 );
 
 app.use(notFound);
