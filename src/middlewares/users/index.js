@@ -97,6 +97,7 @@ const optionalRoleRequired = check('role', 'role is required').optional().not().
 
 export const getValidator = [
     validJwt,
+    hasRole(ADMIN),
     validResult
 ];
 

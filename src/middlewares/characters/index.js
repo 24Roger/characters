@@ -11,7 +11,7 @@ const upload = multer();
 
 const nameRequired = check('name', 'name is required').not().isEmpty();
 
-const nameValid = body('name').trim().isLength({ min: 2, max: 50 }).withMessage('name field must be between 8 and 32 characters long');
+const nameValid = body('name').trim().isLength({ min: 2, max: 50 }).withMessage('name field must be between 2 and 50 characters long');
 
 const nameExist = body('name').trim().custom(
     async (name = '') => {
@@ -27,7 +27,7 @@ const ageValid = body('age').trim().isInt().withMessage('age is invalid');
 
 const historyRequired = check('history', 'history is required').not().isEmpty();
 
-const historyValid = body('history').trim().isString().isLength({ min: 10, max: 1000 }).withMessage('field must be between 10 and 1000 characters long');
+const historyValid = body('history').trim().isString().isLength({ min: 10, max: 1000 }).withMessage('history field must be between 10 and 1000 characters long');
 
 const idRequired = check('id', 'id is required').not().isEmpty();
 

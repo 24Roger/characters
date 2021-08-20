@@ -1,0 +1,966 @@
+{
+    "openapi": "3.0.0",
+    "servers": [
+        {
+            "description": "Production",
+            "url": "https://characters-app-hmrsv.ondigitalocean.app/api/v1"
+        },
+        {
+            "description": "Development",
+            "url": "http://localhost:4000/api/v1"
+        }
+    ],
+    "info": {
+        "version": "1.0.0",
+        "title": "Characters App",
+        "description": "This is a demo REST API of characters and movies, link repository: https://github.com/24Roger/characters "
+    },
+    "tags": [
+        {
+            "name": "Auth",
+            "description": "Things you can do"
+        },
+        {
+            "name": "Character",
+            "description": "Things you can do"
+        },
+        {
+            "name": "Content",
+            "description": "Things you can do"
+        },
+        {
+            "name": "Genre",
+            "description": "Things you can do"
+        },
+        {
+            "name": "Movie",
+            "description": "Things you can do"
+        },
+        {
+            "name": "User",
+            "description": "Things you can do"
+        }
+    ],
+    "security": [
+        {
+            "JWT": ["read", "write"]
+        }
+    ],
+    "paths": {
+        "/auth/login": {
+            "post": {
+                "summary": "Login user",
+                "tags": ["Auth"],
+                "description": "Role admin test \"email\": \"useradmin@test.com\", \"password\": \"71bLW!gx4ufqJZyDpvEJNE3V\"",
+                "security": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {}
+                }
+            }
+        },
+        "/auth/register": {
+            "post": {
+                "summary": "Register user",
+                "tags": ["Auth"],
+                "security": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Register"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {},
+                    "400": {}
+                }
+            }
+        },
+        "/characters": {
+            "get": {
+                "summary": "Character List",
+                "tags": ["Character"],
+                "parameters": [
+                    {
+                        "name": "filter[name]",
+                        "in": "query",
+                        "description": "Filter by name, case sensitive",
+                        "required": false,
+                        "example": "S",
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "401": {}
+                }
+            }
+        },
+        "/character/{id}": {
+            "get": {
+                "summary": "Character",
+                "tags": ["Character"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {}
+                }
+            }
+        },
+        "/character/{id}/movies": {
+            "get": {
+                "summary": "Character related to movies",
+                "tags": ["Character"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {}
+                }
+            }
+        },
+        "/character": {
+            "post": {
+                "summary": "Create a new Character",
+                "tags": ["Character"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Character"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {},
+                    "403": {}
+                }
+            }
+        },
+        "/character/{id}/image": {
+            "post": {
+                "summary": "Upload character image",
+                "description": "Currently not available uploading images with swagger, you can try with postman",
+                "tags": ["Character"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ]
+            },
+            "responses": {
+                "200": {},
+                "400": {},
+                "401": {},
+                "403": {}
+            }
+        },
+        "/character/{id}/update": {
+            "put": {
+                "summary": "Update character",
+                "tags": ["Character"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "You must remove the field that you don't want to update",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Character"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {},
+                    "403": {}
+                }
+            }
+        },
+        "/character/{idCharacter}/movie/{idMovie}": {
+            "put": {
+                "summary": "Associate character with movies",
+                "tags": ["Character"],
+                "parameters": [
+                    {
+                        "name": "idCharacter",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "idMovie",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {},
+                    "403": {}
+                }
+            }
+        },
+        "/character/{id}/delete": {
+            "delete": {
+                "summary": "Delete character",
+                "tags": ["Character"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {},
+                    "403": {}
+                }
+            }
+        },
+        "/contentTypes": {
+            "get": {
+                "summary": "Content list",
+                "tags": ["Content"],
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {}
+                }
+            }
+        },
+        "/contentType": {
+            "post": {
+                "summary": "Create a new type Content",
+                "tags": ["Content"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Content"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {},
+                    "403": {}
+                }
+            }
+        },
+        "/contentType/{id}/update": {
+            "put": {
+                "summary": "Update Content type",
+                "tags": ["Content"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Content"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {},
+                    "403": {}
+                }
+            }
+        },
+        "/contentType/{id}/delete": {
+            "delete": {
+                "summary": "Delete content type",
+                "tags": ["Content"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {},
+                    "403": {}
+                }
+            }
+        },
+        "/genreTypes": {
+            "get": {
+                "summary": "Genre type list",
+                "tags": ["Genre"],
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {}
+                }
+            }
+        },
+        "/genreType": {
+            "post": {
+                "summary": "Create a new Genre type",
+                "tags": ["Genre"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Genre"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {},
+                    "403": {}
+                }
+            }
+        },
+        "/genreType/{id}/update": {
+            "put": {
+                "summary": "Update Genre type",
+                "tags": ["Genre"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Genre"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {},
+                    "403": {}
+                }
+            }
+        },
+        "/genreType/{id}/delete": {
+            "delete": {
+                "summary": "Delete Genre type",
+                "tags": ["Genre"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {},
+                    "403": {}
+                }
+            }
+        },
+        "/movies": {
+            "get": {
+                "summary": "Movies list",
+                "tags": ["Movie"],
+                "parameters": [
+                    {
+                        "name": "filter[title]",
+                        "in": "query",
+                        "description": "filter by title, case sensitive",
+                        "required": false,
+                        "example": "T",
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "options[order]",
+                        "in": "query",
+                        "description": "Change order",
+                        "required": false,
+                        "example": "creationDate;DESC",
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "401": {}
+                }
+            }
+        },
+        "/movie/{id}": {
+            "get": {
+                "summary": "Movie",
+                "tags": ["Movie"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {}
+                }
+            }
+        },
+        "/movie/{id}/characters": {
+            "get": {
+                "summary": "Movie with related Characters",
+                "tags": ["Movie"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {}
+                }
+            }
+        },
+        "/movie": {
+            "post": {
+                "summary": "Create a new Movie",
+                "tags": ["Movie"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Movie"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {},
+                    "403": {}
+                }
+            }
+        },
+        "/movie/{id}/image": {
+            "post": {
+                "summary": "Upload Movie image",
+                "description": "Currently not available uploading images with swagger, you can try with postman",
+                "tags": ["Movie"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {},
+                    "403": {}
+                }
+            }
+        },
+        "/movie/{id}/update": {
+            "put": {
+                "summary": "Update movie",
+                "tags": ["Movie"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "You must remove the field that you don't want to update",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Movie"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {},
+                    "403": {}
+                }
+            }
+        },
+        "/movie/{idMovie}/character/{idCharacter}": {
+            "put": {
+                "summary": "Associate movie with characters ",
+                "tags": ["Movie"],
+                "parameters": [
+                    {
+                        "name": "idMovie",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "idCharacter",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {},
+                    "403": {}
+                }
+            }
+        },
+        "/movie/{id}/delete": {
+            "delete": {
+                "summary": "Delete Movie",
+                "description": "",
+                "tags": ["Movie"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {},
+                    "403": {}
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "summary": "User List",
+                "tags": ["User"],
+                "responses": {
+                    "200": {},
+                    "401": {}
+                }
+            }
+        },
+        "/user": {
+            "post": {
+                "summary": "Create a new user",
+                "tags": ["User"],
+                "requestBody": {
+                    "description": "You can remove the name or role fields if you don't want to send them",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {},
+                    "401": {},
+                    "403": {}
+                }
+            }
+        },
+        "/user/{id}/update": {
+            "put": {
+                "summary": "Update user",
+                "tags": ["User"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "You must remove the field that you don't want to update",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {},
+                    "401": {},
+                    "403": {}
+                }
+            }
+        },
+        "/user/{id}/delete": {
+            "delete": {
+                "summary": "Delete user",
+                "description": "",
+                "tags": ["User"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {},
+                    "400": {},
+                    "401": {},
+                    "403": {}
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Login": {
+                "required": ["email", "password"],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "example": "userclient@test.com"
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "DUYBf4W6v&CjYvKpavjKZb2*"
+                    }
+                }
+            },
+            "Register": {
+                "required": ["userName", "email", "password"],
+                "type": "object",
+                "properties": {
+                    "userName": {
+                        "type": "string",
+                        "description": "userName field must be between 5 and 7 characters long",
+                        "example": "usercli",
+                        "unique": true
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "userclient@test.com",
+                        "unique": true
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "password field must be between 8 and 32 characters long",
+                        "example": "DUYBf4W6v&CjYvKpavjKZb2*"
+                    }
+                }
+            },
+            "Character": {
+                "required": ["name", "age", "history"],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "name field must be between 2 and 50 characters long",
+                        "example": "Tony Stark",
+                        "unique": true
+                    },
+                    "age": {
+                        "type": "integer",
+                        "example": "48"
+                    },
+                    "history": {
+                        "type": "string",
+                        "description": "history field must be between 10 and 1000 characters long",
+                        "example": "Tony Stark uses three suits as Iron Man Mark I to escape the Ten Rings terrorist organization..."
+                    }
+                }
+            },
+            "Content": {
+                "required": ["content"],
+                "type": "object",
+                "properties": {
+                    "content": {
+                        "type": "string",
+                        "description": "content field must be between 2 and 10 characters long",
+                        "example": "Movie",
+                        "unique": true
+                    }
+                }
+            },
+            "Genre": {
+                "required": ["genre"],
+                "type": "object",
+                "properties": {
+                    "genre": {
+                        "type": "string",
+                        "description": "genre field must be between 2 and 10 characters long",
+                        "example": "Action",
+                        "unique": true
+                    }
+                }
+            },
+            "Movie": {
+                "required": [
+                    "title",
+                    "creationDate",
+                    "calification",
+                    "genreTypeId",
+                    "contentTypeId"
+                ],
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "description": "title field must be between 5 and 50 characters long",
+                        "example": "The Avengers",
+                        "unique": true
+                    },
+                    "creationDate": {
+                        "type": "date",
+                        "description": "",
+                        "example": "04/11/2012"
+                    },
+                    "calification": {
+                        "type": "float",
+                        "description": "",
+                        "example": "8.5"
+                    },
+                    "genreTypeId": {
+                        "type": "integer",
+                        "description": "genderType must exist",
+                        "example": "1"
+                    },
+                    "contentTypeId": {
+                        "type": "integer",
+                        "description": "contentType must exist",
+                        "example": "1"
+                    }
+                }
+            },
+            "User": {
+                "required": ["userName", "email", "password"],
+                "type": "object",
+                "properties": {
+                    "userName": {
+                        "type": "string",
+                        "description": "userName field must be between 5 and 7 characters long",
+                        "example": "useradm",
+                        "unique": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "name field must be between 5 and 25 characters long",
+                        "example": ""
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "useradmin@test.com",
+                        "unique": true
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "role must be valid \"user\"/\"admin\"",
+                        "example": "admin"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "password field must be between 8 and 32 characters long",
+                        "example": "71bLW!gx4ufqJZyDpvEJNE3V"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "JWT": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    }
+}
