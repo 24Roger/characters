@@ -3,7 +3,7 @@
     "servers": [
         {
             "description": "Production",
-            "url": "https://characters-app-hmrsv.ondigitalocean.app/api/v1"
+            "url": "https://charactersapi.herokuapp.com/api/v1"
         },
         {
             "description": "Development",

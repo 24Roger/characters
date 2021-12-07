@@ -2,7 +2,7 @@
 
 `RESTAPI demo with express, babel, jwt, postgresql, sequilize, swagger, s3`
 
-## [Try API](https://characters-app-hmrsv.ondigitalocean.app/api-docs/)
+## [Try API](https://charactersapi.herokuapp.com/api-docs/)
 
 * Documentation with Swagger
 
